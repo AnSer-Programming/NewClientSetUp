@@ -1,7 +1,13 @@
 const express = require('express');
-const notesRoute = require('./newClient');
 const app = express();
 
-app.use('/NewClient', notesRoute);
+// Declare routes
+const newClientRoute = require('./newClient');
+const clientSetUpRoute = require('./clientSetUp');
+
+// Set Routes
+app.use('/CodeCheck', newClientRoute);
+app.use('/NewClient', newClientRoute);
+app.use('/ClientSetUp', clientSetUpRoute);
 
 module.exports = app;
