@@ -11,9 +11,13 @@
 </head>
 
 <body>
-  <nav class="navbar bg-primary">
-    <a class="navbar-brand text-light p-2" href="/">Home Page</a>
-  </nav>
+  <div class="header" id="myHeader"> 
+    <nav class="navbar bg-primary">
+       <a class="navbar-brand text-light p-2" href="/index.html">Home Page</a>
+       <a class="navbar-brand text-light p-2" href="/clientSetup.html">Office Information</a>
+       <a class="navbar-brand text-light p-2" href="/officeReach.html">Office Reach Information</a>
+    </nav>
+  </div>
   <div class="container">
     <div class="imageHolder text-center m-3">
       <img src="./assets/images/AnSerLogo.png" alt="AnSer Logo" />
@@ -133,8 +137,10 @@
       </form>
     </div>
   </div>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
   <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
   <script src="/assets/js/clientSetUp.js"></script>
+  <script src="/assets/js/breadcrumb.js"></script>
 </body>
 
 </html>
