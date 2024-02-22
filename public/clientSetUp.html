@@ -7,6 +7,7 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <title>New Customer Information Form</title>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous" />
+  <link href="./assets/css/styles.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -20,11 +21,11 @@
     <div class="m-2">
       <form class="clientSetUp p-5">
         <h3>Company Info</h3>
-        <div class="form-group">
+        <div class="form-group-accountId" style="display: none;">
           <label class="form-label" for="account">Account:</label>
           <input id="account" class="form-control" type="text">
         </div>
-        <div class="form-group">
+        <div class="form-group-did" style="display: none;">
           <label class="form-label" for="did">DID:</label>
           <input id="did" class="form-control" type="text">
         </div>
@@ -37,11 +38,25 @@
           <input id="complexName" class="form-control" type="text">
         </div>
         <div class="form-group">
+          <label class="form-label" for="physicalLocation">BUSINESS DESCRIPTION:</label>
+          <input id="businessDescriptionLine1" class="form-control" type="text"placeholder="Line 1">
+          <input id="businessDescriptionLine2" class="form-control" type="text"placeholder="Line 2">
+          <input id="businessDescriptionLine3" class="form-control" type="text"placeholder="Line 3">
+          <input id="businessDescriptionLine4" class="form-control" type="text"placeholder="Line 4">
+        </div>
+        <div class="form-group">
           <label class="form-label" for="physicalLocation">PHYSICAL LOCATION:</label>
-          <input id="physicalLocation" class="form-control" type="text">
+          <input id="physicalLocationLine1" class="form-control" type="text"placeholder="Line 1">
+          <input id="physicalLocationLine2" class="form-control" type="text"placeholder="Line 2">
+          <input id="physicalLocationLine3" class="form-control" type="text"placeholder="Line 3">
+          <input id="physicalLocationLine4" class="form-control" type="text"placeholder="Line 4">
         </div>
         <div class="form-group">
           <label class="form-label" for="mailingAddress">MAILING ADDRESS:</label>
+          <div class="form-check">
+            <input class="form-check-input" type="checkbox" id="sameAsPhysicalLocation">
+            <label class="form-check-label" for="sameAsPhysicalLocation">Same as Physical Location</label>
+          </div>
           <input id="mailingAddressLine1" class="form-control" type="text" placeholder="Line 1">
           <input id="mailingAddressLine2" class="form-control" type="text" placeholder="Line 2">
           <input id="mailingAddressLine3" class="form-control" type="text" placeholder="Line 3">
@@ -49,27 +64,31 @@
         </div>
         <div class="form-group">
           <label class="form-label" for="primaryOfficeLine">PRIMARY OFFICE LINE:</label>
-          <input id="primaryOfficeLine" class="form-control" type="tel">
-        </div>
-        <div class="form-group">
-          <label class="form-label" for="tollFree">TOLL FREE:</label>
-          <input id="tollFree" class="form-control" type="tel">
+          <input id="primaryOfficeLine" class="form-control" type="tel"placeholder="(000) 000-0000">
+          <div id="error-message">Please enter a 10-digit phone number.</div>
         </div>
         <div class="form-group">
           <label class="form-label" for="secondaryBackLine">SECONDARY/BACK LINE:</label>
-          <input id="secondaryBackLine" class="form-control" type="tel">
+          <input id="secondaryBackLine" class="form-control" type="tel" placeholder="(000) 000-0000">
+          <div id="error-message">Please enter a 10-digit phone number.</div>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="tollFree">TOLL FREE:</label>
+          <input id="tollFree" class="form-control" type="tel" placeholder="(000) 000-0000">
+          <div id="error-message">Please enter a 10-digit phone number.</div>
         </div>
         <div class="form-group">
           <label class="form-label" for="fax">FAX:</label>
-          <input id="fax" class="form-control" type="tel">
+          <input id="fax" class="form-control" type="tel" placeholder="(000) 000-0000">
+          <div id="error-message">Please enter a 10-digit phone number.</div>
         </div>
         <div class="form-group">
           <label class="form-label" for="officeEmail">OFFICE EMAIL:</label>
-          <input id="officeEmail" class="form-control" type="email">
+          <input id="officeEmail" class="form-control" type="email"placeholder="info@anser.com">
         </div>
         <div class="form-group">
           <label class="form-label" for="website">WEBSITE:</label>
-          <input id="website" class="form-control" type="url">
+          <input id="website" class="form-control" type="url" placeholder="anser.com">
         </div>
         <hr>
         <h3>Office Hours</h3>
