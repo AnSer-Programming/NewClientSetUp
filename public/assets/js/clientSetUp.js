@@ -39,6 +39,4 @@ function formatPhoneNumber (event) {
   }
 };
 
-
-
 console.log(getQuery[getQuery.length-1]);
