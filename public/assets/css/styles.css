@@ -84,3 +84,12 @@ body {
 .form-group {
   margin-bottom: 1.5rem;
 }
+
+.hidden {
+  display: none;
+}
+
+#error-message {
+  color: red;
+  display: none;
+};
