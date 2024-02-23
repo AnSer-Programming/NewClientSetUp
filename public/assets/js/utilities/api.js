@@ -1,4 +1,12 @@
-export const getURLCodes = (code) => 
+export const getURLCodes = () => 
+  fetch(`/api/GetURLCode`, {
+    method: 'GET',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+  });
+  
+export const getCheckURLCode = (code) => 
   fetch(`/api/CodeCheck/${code}`, {
     method: 'GET',
     headers: {

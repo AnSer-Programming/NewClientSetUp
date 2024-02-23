@@ -17,15 +17,19 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public/index.html'))
 });
 
-app.get('/notes', (req, res) =>
-    res.sendFile(path.join(__dirname, 'public/notes.html'))
+app.get('/OfficeReach', (req, res) =>
+    res.sendFile(path.join(__dirname, 'public/officeReach.html'))
 );
 
-app.get('/clientSetUp', (req, res) =>
+app.get('/StartNewClient', (req, res) =>
+    res.sendFile(path.join(__dirname, 'public/startNewClient.html'))
+);
+
+app.get('/ClientSetUp', (req, res) =>
     res.sendFile(path.join(__dirname, 'public/clientSetUp.html'))
 );
 
-app.get('/clientSetUp/*', (req, res) =>
+app.get('/ClientSetUp/*', (req, res) =>
     res.sendFile(path.join(__dirname, 'public/clientSetUp.html'))
 );
 
