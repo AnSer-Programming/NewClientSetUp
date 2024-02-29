@@ -14,9 +14,9 @@
 <body>
   <div class="header" id="myHeader"> 
     <nav class="navbar bg-primary">
-       <a class="navbar-brand text-light p-2" href="/">Home Page</a>
-       <a class="navbar-brand text-light p-2" href="/ClientSetup">Office Information</a>
-       <a class="navbar-brand text-light p-2" href="/officeReach">Office Reach Information</a>
+       <a class="navbar-brand text-light" href="/">Home Page</a>
+       <a class="navbar-brand text-light" href="/ClientSetup">Office Information</a>
+       <a class="navbar-brand text-light" href="/officeReach">Office Reach Information</a>
     </nav>
   </div>
   <div class="container">
@@ -25,7 +25,7 @@
     </div>
     <div class="m-2">
       <form class="clientSetUp p-5">
-        <h3>Company Info</h3>
+        <h3 class="text-center">Company Info</h3>
         <div class="form-group-accountId" style="display: none;">
           <label class="form-label" for="account">Account:</label>
           <input id="account" class="form-control" type="text">
@@ -97,6 +97,18 @@
         </div>
         <hr>
         <h3>Office Hours</h3>
+        <label for="timeZoneSelect">Time Zone:</label>
+        <select id="timeZoneSelect">
+          <option value="Atlantic">Atlantic</option>
+          <option value="Eastern">Eastern</option>
+          <option value="Central">Central</option>
+          <option value="Mountain">Mountain</option>
+          <option value="Pacific">Pacific</option>
+          <option value="Alaska">Alaska</option>
+          <option value="Hawaii-Aleutian">Hawaii-Aleutian</option>
+          <option value="Samoa">Samoa</option>
+          <option value="Chamorro">Chamorro</option>       
+        </select>
         <table class="table">
           <thead>
             <tr>
