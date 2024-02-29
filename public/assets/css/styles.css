@@ -3,7 +3,16 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-} 
+}
+
+.header {
+  text-align: center;
+}
+.navbar-brand {
+  margin-right: auto; /* Adjust this value as needed to decrease or increase spacing */
+  margin-left: auto;
+}
+
 
 .sticky {
   position: fixed;
@@ -67,4 +76,9 @@ body {
   height: 3px;
   background-color: blue;
   transition: all 0.3s ease-in-out;
+}
+
+.text-center {
+  text-align: center;
+  font-size: 45px;  
 }
