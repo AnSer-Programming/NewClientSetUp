@@ -1,37 +1,89 @@
-const notes = require('express').Router();
+const router = require('express').Router();
+const { NewClientPaperWork } = require('../../models');
 const CryptoJS = require("crypto-js");
 const dotenv = require('dotenv');
 dotenv.config();
 const { readAndAppend, readFromFile } = require('../helpers/fsUtils');
-const {parse, stringify, toJSON, fromJSON} = require('flatted');
+const { parse, stringify, toJSON, fromJSON } = require('flatted');
 
-notes.get('/', (req, res) => {
-    console.info(`${ req.method } request received to add a new note`);
-    readFromFile('./db/db.json').then((data) => res.json(JSON.parse(data)));
-});
+// be sure to include its associated Products
+// router.get('/', async (req, res) => {
+//   try {
+//     const vesselListData = await VesselListTable.findAll({ });
+//     res.status(200).json(vesselListData);
+//   } catch (err) {
+//     res.status(500).json(err);
+//   }
+// });
 
-// POST Route for submitting notes
-notes.post('/', (req, res) => {
-    const { title, text } = req.body;
-    // console.log("Text: " + text);
-    const encrypted = toJSON(CryptoJS.AES.encrypt(text, process.env.SECRET_PHRASE));
-    const decrypted = CryptoJS.AES.decrypt(fromJSON(encrypted), process.env.SECRET_PHRASE);
-    // console.log("Encrypted: " + encrypted);
-    var plaintext = decrypted.toString(CryptoJS.enc.Utf8); 
-    console.log(plaintext);
-    console.log(encrypted);
+router.get('/:clientName', async (req, res) => {
+    try {
+        const newClientData = await NewClientPaperWork.findOne({
+            where: {
+                client_name: req.params.clientName
+            }
+        });
 
-    if (req.body) {
-        const newNotes = {
-            title,
-            text: {encrypted},
-        };
+        if (!newClientData) {
+            res.status(404).json({ message: 'This client does not exist!' });
+            return;
+        }
 
-        readAndAppend(newNotes, './db/db.json');
-        res.json('Note made');
-    } else {
-        res.json('Error in posting notes');
+        res.status(200).json(vesselListData);
+    } catch (err) {
+        res.status(500).json(err);
     }
 });
 
-module.exports = notes;
+router.post('/', async (req, res) => {
+    const encrypted = toJSON(CryptoJS.AES.encrypt(text, process.env.SECRET_PHRASE));
+    const decrypted = CryptoJS.AES.decrypt(fromJSON(encrypted), process.env.SECRET_PHRASE);
+    // console.log("Encrypted: " + encrypted);
+    var plaintext = decrypted.toString(CryptoJS.enc.Utf8);
+    console.log(plaintext);
+    console.log(encrypted);
+    // create a new vessel/contact
+    try {
+        const newClientData = await NewClientPaperWork.create(req.body);
+        res.status(200).json(newClientData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.put('/ByID/:id', async (req, res) => {
+    // update a category by its `id` value
+    try {
+        const newClientData = await NewClientPaperWork.update(req.body, {
+            where: {
+                index: req.params.id
+            }
+        });
+        if (!newClientData[0]) {
+            res.status(404).json({ message: `ID Error!` });
+            return;
+        }
+        res.status(200).json(newClientData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+router.delete('/ByID/:id', async (req, res) => {
+    try {
+        const newClientData = await NewClientPaperWork.destroy({
+            where: {
+                index: req.params.id
+            }
+        });
+        if (!newClientData) {
+            res.status(404).json({ message: `ID Error!` });
+            return;
+        }
+        res.status(200).json(newClientData);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+});
+
+module.exports = router;
