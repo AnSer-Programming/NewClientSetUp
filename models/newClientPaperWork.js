@@ -1,5 +1,5 @@
 const { DataTypes, Model } = require('sequelize');
-const sequelize = require('../config/connection');
+const sequelize = require('../connection/config');
 
 try {
   class NewClientPaperWork extends Model {}
