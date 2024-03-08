@@ -24,9 +24,15 @@ app.get('/OfficeReach', (req, res) =>
 app.get('/StartNewClient', (req, res) =>
     res.sendFile(path.join(__dirname, 'public/startNewClient.html'))
 );
+app.get('/AnswerCalls', (req, res) =>
+    res.sendFile(path.join(__dirname, 'public/answerCalls.html'))
+);
 
 app.get('/ClientSetUp', (req, res) =>
     res.sendFile(path.join(__dirname, 'public/clientSetUp.html'))
+);
+app.get('/Test', (req, res) =>
+    res.sendFile(path.join(__dirname, 'public/test.html'))
 );
 
 app.get('/ClientSetUp/*', (req, res) =>

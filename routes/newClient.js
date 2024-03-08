@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const { NewClientPaperWork } = require('../../models');
+const { NewClientPaperWork } = require('../models');
 const CryptoJS = require("crypto-js");
 const dotenv = require('dotenv');
 dotenv.config();
