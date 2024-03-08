@@ -5,23 +5,10 @@ body {
   padding: 0;
 }
 
-.header {
-  text-align: center;
-}
-.navbar-brand {
-  margin-right: auto; /* Adjust this value as needed to decrease or increase spacing */
-  margin-left: auto;
-}
-
-
 .sticky {
   position: fixed;
   top: 0;
-  width: 100%
-}
-
-.sticky + .content {
-  padding-top: 102px;
+  width: 100%;
 }
 
 .form-label {
@@ -39,36 +26,6 @@ body {
 #error-message {
   color: red;
   display: none;
-};
-
-.breadcrumb {
-  background-color: #f2f2f2;
-  position: sticky;
-  top: 0;
-  left: 0;
-  width: 100%;
-  z-index: 1000;
-}
-
-.breadcrumb ul {
-  list-style-type: none;
-  margin: 0;
-  padding: 0;
-}
-
-.breadcrumb ul li {
-  display: inline;
-}
-
-.breadcrumb ul li a {
-  display: inline-block;
-  padding: 10px 20px;
-  text-decoration: none;
-  color: #333;
-}
-
-.breadcrumb ul li a:hover {
-  background-color: #ddd;
 }
 
 .sliding-bar {
@@ -76,9 +33,4 @@ body {
   height: 3px;
   background-color: blue;
   transition: all 0.3s ease-in-out;
-}
-
-.text-center {
-  text-align: center;
-  font-size: 45px;  
 }
