@@ -1,42 +1,41 @@
-var url = window.location.pathname;
-var getQuery = url.split('/');
-let saveFile = new Array();
+$(document).ready(function() {
+  var url = window.location.pathname;
+  var getQuery = url.split('/');
+  var saveFile = []; // Use an array to store form data
 
-$('#submitButton').on('click', function(event) {
-  event.preventDefault();  
-  let formElements = $('.form-control');
+  $('#submitButton').on('click', function(event) {
+    event.preventDefault();  
+    var formElements = $('.form-control');
 
-  for(let i = 0; i < formElements.length; i++) {
-    saveFile.push({field: `${formElements[i].id}`, value: `${formElements[i].value}`});
-  }
-});
+    formElements.each(function() {
+      saveFile.push({ field: this.id, value: $(this).val() });
+    });
+  });
 
+  var $mailingAddressLines = $("#mailingAddressLine1, #mailingAddressLine2, #mailingAddressLine3, #mailingAddressLine4");
+  $('#sameAsPhysicalLocation').change(function(event) {
+    event.preventDefault();
+    if ($(this).is(":checked")) {
+      $mailingAddressLines.addClass('hidden');
+    } else {
+      $mailingAddressLines.removeClass('hidden');
+    }
+  });
 
-var $mailingAddressLines = $("#mailingAddressLine1, #mailingAddressLine2, #mailingAddressLine3, #mailingAddressLine4");
-$('#sameAsPhysicalLocation').change(function(event) {
-  event.preventDefault();
-  if ($(this).is(":checked")) {
-    $mailingAddressLines.addClass('hidden');
-  } else {
-    $mailingAddressLines.removeClass('hidden');
-  }
-});
+  $('#primaryOfficeLine, #secondaryBackLine, #tollFree').on('blur', formatPhoneNumber);
 
-document.getElementById('primaryOfficeLine').addEventListener('blur', formatPhoneNumber);
-document.getElementById('secondaryBackLine').addEventListener('blur', formatPhoneNumber);
-document.getElementById('tollFree').addEventListener('blur', formatPhoneNumber); 
+  function formatPhoneNumber(event) {
+    var phoneNumberInput = event.target;
+    var phoneNumber = phoneNumberInput.value.replace(/\D/g, ''); // Remove non-numeric characters
 
-function formatPhoneNumber (event) {
-  var phoneNumberInput = event.target;
-  var phoneNumber = phoneNumberInput.value.replace(/\D/g, ''); // Remove non-numeric characters
-
-  if (phoneNumber.length === 10) {
+    if (phoneNumber.length === 10) {
       phoneNumberInput.value = '(' + phoneNumber.substring(0, 3) + ') ' + phoneNumber.substring(3, 6) + '-' + phoneNumber.substring(6);
-      document.getElementById('error-message').style.display = 'none'; // Hide error message if previously shown
-  } else {
+      $('#error-message').hide(); // Hide error message if previously shown
+    } else {
       // If the length is not 10 digits, display error message
-      document.getElementById('error-message').style.display = 'block';
+      $('#error-message').show();
+    }
   }
-};
 
-console.log(getQuery[getQuery.length-1]);
+  console.log(getQuery[getQuery.length - 1]);
+});
